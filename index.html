@@ -8,6 +8,7 @@
 </head>
 <body>
     <script>
+
   
      // version 1 arrays
      var todos = ['item1', 'item2', 'item3'];
@@ -16,6 +17,35 @@
     todos[2] = 'changed_item3';
     todos.splice(2,1);
     
+
+    // version 3 Objects
+    /*
+    var akbel = {
+        name : 'Akbel',
+        sayName : function (){
+            console.log(this.name);
+    }}*/
+
+    var todolist = {
+        todos: ['item1', 'item2', 'item3'],
+        displayTodos: function(){
+            console.log('here:',this.todos)},
+        addTo: function (a){
+            this.todos.push(a);
+            this.displayTodos();},
+            //todolist.addTo('added item')
+        changeTo: function (index, value){
+            this.todos[index] = value;
+            this.displayTodos();},
+            //todolist.changeTo(0,'changed')
+        deleteTo: function(index){
+            this.todos.splice(index,1);
+            this.displayTodos();
+            //tolist.deleteTo(0)
+        }
+        };
+
+
     </script>
 </body>
 </html>
