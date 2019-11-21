@@ -85,6 +85,35 @@
         }
         };
 
+        // version4
+
+        var todolist = {
+        todos: [],
+        displayTodos: function(){
+            console.log('there:',this.todos)},
+        addTo: function (a){
+            this.todos.push({
+                todoText: a,
+                completed : false,
+            });
+            this.displayTodos();},
+            //todolist.addTo('added item')
+        changeTo: function (index, todoText){
+            this.todos[index].todoText = todoText;
+            this.displayTodos();},
+            //todolist.changeTo(0,'changed')
+        deleteTo: function(index){
+            this.todos.splice(index,1);
+            this.displayTodos();
+            //tolist.deleteTo(0)
+        },
+        toggleCompleted: function (position){
+            var short = this.todos[position];
+            short.completed = !short.completed;
+            this.displayTodos();
+        }
+        };
+
 
     </script>
 </body>
