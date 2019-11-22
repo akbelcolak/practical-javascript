@@ -114,6 +114,46 @@
         }
         };
 
+        // version5 Loops logic
+
+        var todolist = {
+        todos: [],
+        displayTodos: function(){
+            if(this.todos.length === 0){
+                console.log('todolist is empty');
+            } else{ console.log('my todos:');
+                    for (i=0; i< this.todos.length; i++){
+                        if(this.todos[i].completed === true){
+                            console.log('(x)', this.todos[i].todoText);}
+                        else{
+                            console.log('( )',this.todos[i].todoText);
+                        }}
+            }
+            },
+        addTo: function (a){
+            this.todos.push({
+                todoText: a,
+                completed : false,
+            });
+            this.displayTodos();},
+            //todolist.addTo('added item')
+        changeTo: function (index, todoText){
+            this.todos[index].todoText = todoText;
+            this.displayTodos();},
+            //todolist.changeTo(0,'changed')
+        deleteTo: function(index){
+            this.todos.splice(index,1);
+            this.displayTodos();
+            //tolist.deleteTo(0)
+        },
+        toggleCompleted: function (position){
+            var short = this.todos[position];
+            short.completed = !short.completed;
+            this.displayTodos();
+        }
+        };
+
+
 
     </script>
 </body>
