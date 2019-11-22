@@ -7,11 +7,38 @@
     <title>Akbel Hanim</title>
   </head>
   <body>
-      <!-- version7 html part -->
+      <!-- version7 html part
       <h1>Todo List</h1>
 
       <button id='displayTodosButton'>Display Todos</button>
-      <button id= 'toggleAllButton'>Toggle All</button>
+      <button id= 'toggleAllButton'>Toggle All</button>  -->
+
+      <!-- version 8 - rewriting version 7 with a different style and adding other buttons-->
+      <div>
+      <button onclick = "handlers.displayTodos()"> Display Todos </button>
+      <button onclick = "handlers.toggleAll()"> Toggle All Items</button>
+      </div>
+
+      <div>
+      <button onclick = "handlers.addTo()">Add</button>
+      <input id = "addTodoTextInput" type = "text">
+      </div>
+
+      <div>
+          <button onclick = 'handlers.changeTo()' >Change Item</button>
+          <input id = 'changeToIndexInput' type = 'number'>
+          <input id = 'changeToTextInput' type = 'text'>
+      </div>
+
+      <div>
+          <button onclick = 'handlers.deleteTo()'>Delete Item</button>
+          <input id = 'deleteToIndexInput' type = 'number'>
+      </div>
+
+      <div>
+          <button onclick = 'handlers.toggleCompleted()'>Toggle Completed</button>
+          <input id = 'toggleInput' type = 'number'>
+      </div>
 
 
     <script>
@@ -228,6 +255,7 @@
           this.displayTodos();
         }
       };
+      /*
       // version7 buttons for real app
       // get access display button:
       var displayTodosButton = document.getElementById('displayTodosButton');
@@ -240,6 +268,40 @@
       toggleAllButton.addEventListener('click', function(){
           todolist.toggleAll();
       });
+      */
+
+      //version 8 - adding js into html with a different approach
+      var handlers = {
+          displayTodos: function(){
+              todolist.displayTodos();
+          },
+          addTo: function(){
+              var input = document.getElementById('addTodoTextInput');
+              todolist.addTo(input.value);
+              input.value = '';
+          },
+          changeTo: function(){
+              var changeIndexInput = document.getElementById('changeToIndexInput');
+              var changeTextInput = document.getElementById('changeToTextInput');
+              todolist.changeTo(changeIndexInput.valueAsNumber, changeTextInput.value);
+              changeIndexInput.value = '';
+              changeTextInput.value = '';
+          },
+          deleteTo: function(){
+              var deleteToInput = document.getElementById('deleteToIndexInput');
+              todolist.deleteTo(deleteToInput.valueAsNumber);
+              deleteToInput.value = '';
+          },
+          toggleCompleted: function(){
+              var toggleInput = document.getElementById('toggleInput');
+              todolist.toggleCompleted(toggleInput.valueAsNumber);
+              toggleInput.value = '';
+          },
+          toggleAll: function(){
+              todolist.toggleAll();
+          }
+      };
+
 
     </script>
   </body>
