@@ -275,6 +275,9 @@
           displayTodos: function(){
               todolist.displayTodos();
           },
+          toggleAll: function(){
+              todolist.toggleAll();
+          },
           addTo: function(){
               var input = document.getElementById('addTodoTextInput');
               todolist.addTo(input.value);
@@ -296,10 +299,8 @@
               var toggleInput = document.getElementById('toggleInput');
               todolist.toggleCompleted(toggleInput.valueAsNumber);
               toggleInput.value = '';
-          },
-          toggleAll: function(){
-              todolist.toggleAll();
           }
+         
       };
 
 
