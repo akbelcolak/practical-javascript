@@ -7,6 +7,13 @@
     <title>Akbel Hanim</title>
   </head>
   <body>
+      <!-- version7 html part -->
+      <h1>Todo List</h1>
+
+      <button id='displayTodosButton'>Display Todos</button>
+      <button id= 'toggleAllButton'>Toggle All</button>
+
+
     <script>
       // version 1 arrays
       var todos = ["item1", "item2", "item3"];
@@ -221,6 +228,19 @@
           this.displayTodos();
         }
       };
+      // version7 buttons for real app
+      // get access display button:
+      var displayTodosButton = document.getElementById('displayTodosButton');
+      var toggleAllButton = document.getElementById('toggleAllButton');
+      
+      //run the button
+      displayTodosButton.addEventListener('click', function(){
+          todolist.displayTodos();
+      });
+      toggleAllButton.addEventListener('click', function(){
+          todolist.toggleAll();
+      });
+
     </script>
   </body>
 </html>
