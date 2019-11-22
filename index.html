@@ -153,6 +153,68 @@
         }
         };
 
+    //version6 toggle
+
+var todolist = {
+        todos: [],
+        displayTodos: function(){
+            if(this.todos.length === 0){
+                console.log('todolist is empty');
+            } else{ console.log('my todos:');
+                    for (i=0; i< this.todos.length; i++){
+                        if(this.todos[i].completed === true){
+                            console.log('(x)', this.todos[i].todoText);}
+                        else{
+                            console.log('( )',this.todos[i].todoText);
+                        }}
+            }
+            },
+        addTo: function (a){
+            this.todos.push({
+                todoText: a,
+                completed : false,
+            });
+            this.displayTodos();},
+            //todolist.addTo('added item')
+        changeTo: function (index, todoText){
+            this.todos[index].todoText = todoText;
+            this.displayTodos();},
+            //todolist.changeTo(0,'changed')
+        deleteTo: function(index){
+            this.todos.splice(index,1);
+            this.displayTodos();
+            //tolist.deleteTo(0)
+        },
+        toggleCompleted: function (position){
+            var short = this.todos[position];
+            short.completed = !short.completed;
+            this.displayTodos();
+        },
+        toggleAll: function(){
+            var totalTodos = this.todos.length; // total elements in todos array
+            completedTodos = 0; // where to start cheked elements
+            //for number of completed todos
+            for (var i=0; i<totalTodos; i++){
+                if(this.todos[i].completed === true){
+                    toggleCompleted++;
+                }
+            }
+            //first case: if everything is true , tik all of them false
+            if(completedTodos === totalTodos){
+                //make false for each item
+                for(var i= 0; i<totalTodos; i++){
+                    this.todos[i].completed = false;
+                }
+            } //second case: make everything true
+            else{
+                for(var i = 0; i<totalTodos; i++){
+                    this.todos[i].completed = true;
+                }
+            }
+            this.displayTodos();
+        }
+
+        };
 
 
     </script>
