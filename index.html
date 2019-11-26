@@ -329,6 +329,12 @@
           }
       };
 
+      var todosUl = document.querySelector('ul');
+
+      todosUl.addEventListener('click', function(event){
+        console.log(event.target.parentNode.id);//we used inspect element to find what we are looking for such as target, parentNode..
+      });
+
 
     </script>
   </body>
