@@ -315,7 +315,18 @@
 
           for (var i = 0; i < todolist.todos.length; i++){
             var todoLi = document.createElement('li');
+            var todo = todolist.todos[i]; // just to make easier to read
+            var todoTextWithCompletion = '';
+
+            if (todo.completed === true ){
+              todoTextWithCompletion = '(x) ' + todo.todoText;
+            } else {
+              todoTextWithCompletion = '( ) ' + todo.todoText;
+            }
+
+            todoLi.textContent =todoTextWithCompletion;
             todosUl.appendChild(todoLi);
+
           }
         }
       };
