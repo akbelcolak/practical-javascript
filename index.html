@@ -15,7 +15,7 @@
 
       <!-- version 8 - rewriting version 7 with a different style and adding other buttons-->
       <div>
-      <button onclick = "handlers.displayTodos()"> Display Todos </button>
+     
       <button onclick = "handlers.toggleAll()"> Toggle All Items</button>
       </div>
 
@@ -198,42 +198,29 @@
 
       var todolist = {
         todos: [],
-        displayTodos: function() {
-          if (this.todos.length === 0) {
-            console.log("todolist is empty");
-          } else {
-            console.log("my todos:");
-            for (i = 0; i < this.todos.length; i++) {
-              if (this.todos[i].completed === true) {
-                console.log("(x)", this.todos[i].todoText);
-              } else {
-                console.log("( )", this.todos[i].todoText);
-              }
-            }
-          }
-        },
+     
         addTo: function(a) {
           this.todos.push({
             todoText: a,
             completed: false
           });
-          this.displayTodos();
+        
         },
         //todolist.addTo('added item')
         changeTo: function(index, todoText) {
           this.todos[index].todoText = todoText;
-          this.displayTodos();
+         
         },
         //todolist.changeTo(0,'changed')
         deleteTo: function(index) {
           this.todos.splice(index, 1);
-          this.displayTodos();
+          
           //tolist.deleteTo(0)
         },
         toggleCompleted: function(position) {
           var short = this.todos[position];
           short.completed = !short.completed;
-          this.displayTodos();
+          
         },
         toggleAll: function() {
           var totalTodos = this.todos.length; // total elements in todos array
@@ -256,7 +243,7 @@
               this.todos[i].completed = true;
             }
           }
-          this.displayTodos();
+          
         }
       };
       /*
@@ -276,16 +263,16 @@
 
       //version 8 - adding js into html with a different approach
       var handlers = {
-          displayTodos: function(){
-              todolist.displayTodos();
-          },
+        
           toggleAll: function(){
               todolist.toggleAll();
+              view.displayTodos();
           },
           addTo: function(){
               var input = document.getElementById('addTodoTextInput');
               todolist.addTo(input.value);
               input.value = '';
+              view.displayTodos();
           },
           changeTo: function(){
               var changeIndexInput = document.getElementById('changeToIndexInput');
@@ -293,16 +280,19 @@
               todolist.changeTo(changeIndexInput.valueAsNumber, changeTextInput.value);
               changeIndexInput.value = '';
               changeTextInput.value = '';
+              view.displayTodos();
           },
           deleteTo: function(){
               var deleteToInput = document.getElementById('deleteToIndexInput');
               todolist.deleteTo(deleteToInput.valueAsNumber);
               deleteToInput.value = '';
+              view.displayTodos();
           },
           toggleCompleted: function(){
               var toggleInput = document.getElementById('toggleInput');
               todolist.toggleCompleted(toggleInput.valueAsNumber);
               toggleInput.value = '';
+              view.displayTodos();
           }
          
       };
