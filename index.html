@@ -40,6 +40,10 @@
           <input id = 'toggleInput' type = 'number'>
       </div>
 
+      <ul>
+
+      </ul>
+
 
     <script>
       // version 1 arrays
@@ -301,6 +305,19 @@
               toggleInput.value = '';
           }
          
+      };
+
+      // version9 escaping from consol
+      var view = {
+        displayTodos(){
+          var todosUl = document.querySelector('ul');
+          todosUl.innerHTML = '';
+
+          for (var i = 0; i < todolist.todos.length; i++){
+            var todoLi = document.createElement('li');
+            todosUl.appendChild(todoLi);
+          }
+        }
       };
 
 
