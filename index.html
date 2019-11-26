@@ -7,43 +7,34 @@
     <title>Akbel Hanim</title>
   </head>
   <body>
-      <!-- version7 html part
+    <!-- version7 html part
       <h1>Todo List</h1>
 
       <button id='displayTodosButton'>Display Todos</button>
       <button id= 'toggleAllButton'>Toggle All</button>  -->
 
-      <!-- version 8 - rewriting version 7 with a different style and adding other buttons-->
-      <div>
-     
-      <button onclick = "handlers.toggleAll()"> Toggle All Items</button>
-      </div>
+    <!-- version 8 - rewriting version 7 with a different style and adding other buttons-->
+    <div>
+      <button onclick="handlers.toggleAll()">Toggle All Items</button>
+    </div>
 
-      <div>
-      <button onclick = "handlers.addTo()">Add</button>
-      <input id = "addTodoTextInput" type = "text">
-      </div>
+    <div>
+      <button onclick="handlers.addTo()">Add</button>
+      <input id="addTodoTextInput" type="text" />
+    </div>
 
-      <div>
-          <button onclick = 'handlers.changeTo()' >Change Item</button>
-          <input id = 'changeToIndexInput' type = 'number'>
-          <input id = 'changeToTextInput' type = 'text'>
-      </div>
+    <div>
+      <button onclick="handlers.changeTo()">Change Item</button>
+      <input id="changeToIndexInput" type="number" />
+      <input id="changeToTextInput" type="text" />
+    </div>
 
-      <div>
-          <button onclick = 'handlers.deleteTo()'>Delete Item</button>
-          <input id = 'deleteToIndexInput' type = 'number'>
-      </div>
+    <div>
+      <button onclick="handlers.toggleCompleted()">Toggle Completed</button>
+      <input id="toggleInput" type="number" />
+    </div>
 
-      <div>
-          <button onclick = 'handlers.toggleCompleted()'>Toggle Completed</button>
-          <input id = 'toggleInput' type = 'number'>
-      </div>
-
-      <ul>
-
-      </ul>
-
+    <ul></ul>
 
     <script>
       // version 1 arrays
@@ -198,29 +189,26 @@
 
       var todolist = {
         todos: [],
-     
+
         addTo: function(a) {
           this.todos.push({
             todoText: a,
             completed: false
           });
-        
         },
         //todolist.addTo('added item')
         changeTo: function(index, todoText) {
           this.todos[index].todoText = todoText;
-         
         },
         //todolist.changeTo(0,'changed')
         deleteTo: function(index) {
           this.todos.splice(index, 1);
-          
+
           //tolist.deleteTo(0)
         },
         toggleCompleted: function(position) {
           var short = this.todos[position];
           short.completed = !short.completed;
-          
         },
         toggleAll: function() {
           var totalTodos = this.todos.length; // total elements in todos array
@@ -243,7 +231,6 @@
               this.todos[i].completed = true;
             }
           }
-          
         }
       };
       /*
@@ -263,78 +250,85 @@
 
       //version 8 - adding js into html with a different approach
       var handlers = {
-        
-          toggleAll: function(){
-              todolist.toggleAll();
-              view.displayTodos();
-          },
-          addTo: function(){
-              var input = document.getElementById('addTodoTextInput');
-              todolist.addTo(input.value);
-              input.value = '';
-              view.displayTodos();
-          },
-          changeTo: function(){
-              var changeIndexInput = document.getElementById('changeToIndexInput');
-              var changeTextInput = document.getElementById('changeToTextInput');
-              todolist.changeTo(changeIndexInput.valueAsNumber, changeTextInput.value);
-              changeIndexInput.value = '';
-              changeTextInput.value = '';
-              view.displayTodos();
-          },
-          deleteTo: function(){
-              var deleteToInput = document.getElementById('deleteToIndexInput');
-              todolist.deleteTo(deleteToInput.valueAsNumber);
-              deleteToInput.value = '';
-              view.displayTodos();
-          },
-          toggleCompleted: function(){
-              var toggleInput = document.getElementById('toggleInput');
-              todolist.toggleCompleted(toggleInput.valueAsNumber);
-              toggleInput.value = '';
-              view.displayTodos();
-          }
-         
+        toggleAll: function() {
+          todolist.toggleAll();
+          view.displayTodos();
+        },
+        addTo: function() {
+          var input = document.getElementById("addTodoTextInput");
+          todolist.addTo(input.value);
+          input.value = "";
+          view.displayTodos();
+        },
+        changeTo: function() {
+          var changeIndexInput = document.getElementById("changeToIndexInput");
+          var changeTextInput = document.getElementById("changeToTextInput");
+          todolist.changeTo(
+            changeIndexInput.valueAsNumber,
+            changeTextInput.value
+          );
+          changeIndexInput.value = "";
+          changeTextInput.value = "";
+          view.displayTodos();
+        },
+        deleteTo: function(position) {
+          // var deleteToInput = document.getElementById('deleteToIndexInput'); //version 10 we dont need these anymore
+          todolist.deleteTo(position);
+          //deleteToInput.value = '';
+          view.displayTodos();
+        },
+        toggleCompleted: function() {
+          var toggleInput = document.getElementById("toggleInput");
+          todolist.toggleCompleted(toggleInput.valueAsNumber);
+          toggleInput.value = "";
+          view.displayTodos();
+        }
       };
 
       // version9 escaping from consol
       var view = {
-        displayTodos(){
-          var todosUl = document.querySelector('ul');
-          todosUl.innerHTML = '';
+        displayTodos() {
+          var todosUl = document.querySelector("ul");
+          todosUl.innerHTML = "";
 
-          for (var i = 0; i < todolist.todos.length; i++){
-            var todoLi = document.createElement('li');
+          for (var i = 0; i < todolist.todos.length; i++) {
+            var todoLi = document.createElement("li");
             var todo = todolist.todos[i]; // just to make easier to read
-            var todoTextWithCompletion = '';
+            var todoTextWithCompletion = "";
 
-            if (todo.completed === true ){
-              todoTextWithCompletion = '(x) ' + todo.todoText;
+            if (todo.completed === true) {
+              todoTextWithCompletion = "(x) " + todo.todoText;
             } else {
-              todoTextWithCompletion = '( ) ' + todo.todoText;
+              todoTextWithCompletion = "( ) " + todo.todoText;
             }
 
             todoLi.id = i;
-            todoLi.textContent =todoTextWithCompletion;
-            todoLi.appendChild(this.createDeleteButton());//delete button for each todo
+            todoLi.textContent = todoTextWithCompletion;
+            todoLi.appendChild(this.createDeleteButton()); //delete button for each todo
             todosUl.appendChild(todoLi);
-
           }
         },
-        createDeleteButton: function (){
-            var deleteButton = document.createElement('button');
-            deleteButton.textContent = 'Delete';
-            deleteButton.className = 'deleteButton';
-            return deleteButton;
-          }
+        createDeleteButton: function() {
+          var deleteButton = document.createElement("button");
+          deleteButton.textContent = "Delete";
+          deleteButton.className = "deleteButton";
+          return deleteButton;
+        },
+        // to tidy up the code we put another method into the view object
+        setupEventListeners: function() {
+          var todosUl = document.querySelector("ul");
+
+          todosUl.addEventListener("click", function(event) {
+            //console.log(event.target.parentNode.id);//we used inspect element to find what we are looking for such as target, parentNode..
+            var elementClicked = event.target;
+
+            if (elementClicked.className === "deleteButton") {
+              handlers.deleteTo(parseInt(elementClicked.parentNode.id));
+            }
+          });
+        }
       };
-
-      var todosUl = document.querySelector('ul');
-
-      todosUl.addEventListener('click', function(event){
-        console.log(event.target.parentNode.id);//we used inspect element to find what we are looking for such as target, parentNode..
-      });
-
+      view.setupEventListeners();
 
     </script>
   </body>
