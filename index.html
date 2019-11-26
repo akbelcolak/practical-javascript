@@ -314,6 +314,7 @@
               todoTextWithCompletion = '( ) ' + todo.todoText;
             }
 
+            todoLi.id = i;
             todoLi.textContent =todoTextWithCompletion;
             todoLi.appendChild(this.createDeleteButton());//delete button for each todo
             todosUl.appendChild(todoLi);
