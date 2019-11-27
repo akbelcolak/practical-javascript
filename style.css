@@ -1,0 +1,45 @@
+body{
+    width: 80%;
+    text-emphasis: center;
+    line-height:2em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    padding:20;
+    margin:50;
+    background-color:antiquewhite;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+header {
+    width:100%;
+    margin:auto;
+    overflow: hidden;
+    
+}
+
+button {
+    height:50px;
+    background:#e8491d;
+    border:40;
+    margin: 3px;
+    padding-left: 20px;
+    padding-right:20px;
+    color:antiquewhite;
+  }
+input {
+    height:50px;
+    background:antiquewhite;
+    margin: 3px;
+    border:40;
+    padding-left: 20px;
+    padding-right:20px;
+    color:black;
+  }
+
+.do {
+    color: #e8491d;
+}
