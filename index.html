@@ -37,299 +37,294 @@
     <ul></ul>
 
     <script>
-      // version 1 arrays
-      var todos = ["item1", "item2", "item3"];
-      console.log("my todos:", todos);
-      todos.push("item4", "item5");
-      todos[2] = "changed_item3";
-      todos.splice(2, 1);
-
-      // version 2 functions
-      // display a fuction, add st, change st, delete st
-
-      /* first ex.
-    function makeSandwich (filling){
-        Add filling;
-    };
-    makeSandwich(turkey);
-    */
-      var todos = ["item1", "item2", "item3"]; // global var which we can acces from any function
-
-      function displayTodos() {
+        // version 1 arrays
+        var todos = ["item1", "item2", "item3"];
         console.log("my todos:", todos);
-      }
-      displayTodos();
-      // it did not add anything to my todos var when I tried it in console.
-      // after addind todo parameter it worked well
-      function addTodo(todo) {
-        todos.push(todo);
-        displayTodos();
-      }
-      //displayTodos(); we moved this line in to the function to be able to see the result quicker
-      addTodo("do you see me?");
+        todos.push("item4", "item5");
+        todos[2] = "changed_item3";
+        todos.splice(2, 1);
 
-      function changeTodo(index, theValue) {
-        todos[index] = theValue;
-        displayTodos();
-      }
-      changeTodo(1, "does it changed?");
+        // version 2 functions
+        // display a fuction, add st, change st, delete st
 
-      function deleteTodo(index) {
-        todos.splice(index, 1);
-        displayTodos();
-      }
-      deleteTodo(2);
 
-      // version 3 Objects
-      /*
-    var akbel = {
-        name : 'Akbel',
-        sayName : function (){
-            console.log(this.name);
-    }}*/
+        var todos = ["item1", "item2", "item3"]; // global var which we can acces from any function
 
-      var todolist = {
-        todos: ["item1", "item2", "item3"],
-        displayTodos: function() {
-          console.log("here:", this.todos);
-        },
-        addTo: function(a) {
-          this.todos.push(a);
-          this.displayTodos();
-        },
-        //todolist.addTo('added item')
-        changeTo: function(index, value) {
-          this.todos[index] = value;
-          this.displayTodos();
-        },
-        //todolist.changeTo(0,'changed')
-        deleteTo: function(index) {
-          this.todos.splice(index, 1);
-          this.displayTodos();
-          //tolist.deleteTo(0)
+        function displayTodos() {
+          console.log("my todos:", todos);
         }
-      };
-
-      // version4
-
-      var todolist = {
-        todos: [],
-        displayTodos: function() {
-          console.log("there:", this.todos);
-        },
-        addTo: function(a) {
-          this.todos.push({
-            todoText: a,
-            completed: false
-          });
-          this.displayTodos();
-        },
-        //todolist.addTo('added item')
-        changeTo: function(index, todoText) {
-          this.todos[index].todoText = todoText;
-          this.displayTodos();
-        },
-        //todolist.changeTo(0,'changed')
-        deleteTo: function(index) {
-          this.todos.splice(index, 1);
-          this.displayTodos();
-          //tolist.deleteTo(0)
-        },
-        toggleCompleted: function(position) {
-          var short = this.todos[position];
-          short.completed = !short.completed;
-          this.displayTodos();
+        displayTodos();
+        // it did not add anything to my todos var when I tried it in console.
+        // after addind todo parameter it worked well
+        function addTodo(todo) {
+          todos.push(todo);
+          displayTodos();
         }
-      };
+        //displayTodos(); we moved this line in to the function to be able to see the result quicker
+        addTodo("do you see me?");
 
-      // version5 Loops logic
+        function changeTodo(index, theValue) {
+          todos[index] = theValue;
+          displayTodos();
+        }
+        changeTodo(1, "does it changed?");
 
-      var todolist = {
-        todos: [],
-        displayTodos: function() {
-          if (this.todos.length === 0) {
-            console.log("todolist is empty");
-          } else {
-            console.log("my todos:");
-            for (i = 0; i < this.todos.length; i++) {
-              if (this.todos[i].completed === true) {
-                console.log("(x)", this.todos[i].todoText);
-              } else {
-                console.log("( )", this.todos[i].todoText);
+        function deleteTodo(index) {
+          todos.splice(index, 1);
+          displayTodos();
+        }
+        deleteTodo(2);
+
+        // version 3 Objects
+        /*
+      var akbel = {
+          name : 'Akbel',
+          sayName : function (){
+              console.log(this.name);
+      }}*/
+
+        var todolist = {
+          todos: ["item1", "item2", "item3"],
+          displayTodos: function() {
+            console.log("here:", this.todos);
+          },
+          addTo: function(a) {
+            this.todos.push(a);
+            this.displayTodos();
+          },
+          //todolist.addTo('added item')
+          changeTo: function(index, value) {
+            this.todos[index] = value;
+            this.displayTodos();
+          },
+          //todolist.changeTo(0,'changed')
+          deleteTo: function(index) {
+            this.todos.splice(index, 1);
+            this.displayTodos();
+            //tolist.deleteTo(0)
+          }
+        };
+
+        // version4
+
+        var todolist = {
+          todos: [],
+          displayTodos: function() {
+            console.log("there:", this.todos);
+          },
+          addTo: function(a) {
+            this.todos.push({
+              todoText: a,
+              completed: false
+            });
+            this.displayTodos();
+          },
+          //todolist.addTo('added item')
+          changeTo: function(index, todoText) {
+            this.todos[index].todoText = todoText;
+            this.displayTodos();
+          },
+          //todolist.changeTo(0,'changed')
+          deleteTo: function(index) {
+            this.todos.splice(index, 1);
+            this.displayTodos();
+            //tolist.deleteTo(0)
+          },
+          toggleCompleted: function(position) {
+            var short = this.todos[position];
+            short.completed = !short.completed;
+            this.displayTodos();
+          }
+        };
+
+        // version5 Loops logic
+
+        var todolist = {
+          todos: [],
+          displayTodos: function() {
+            if (this.todos.length === 0) {
+              console.log("todolist is empty");
+            } else {
+              console.log("my todos:");
+              for (i = 0; i < this.todos.length; i++) {
+                if (this.todos[i].completed === true) {
+                  console.log("(x)", this.todos[i].todoText);
+                } else {
+                  console.log("( )", this.todos[i].todoText);
+                }
               }
             }
+          },
+          addTo: function(a) {
+            this.todos.push({
+              todoText: a,
+              completed: false
+            });
+            this.displayTodos();
+          },
+          //todolist.addTo('added item')
+          changeTo: function(index, todoText) {
+            this.todos[index].todoText = todoText;
+            this.displayTodos();
+          },
+          //todolist.changeTo(0,'changed')
+          deleteTo: function(index) {
+            this.todos.splice(index, 1);
+            this.displayTodos();
+            //tolist.deleteTo(0)
+          },
+          toggleCompleted: function(position) {
+            var short = this.todos[position];
+            short.completed = !short.completed;
+            this.displayTodos();
           }
-        },
-        addTo: function(a) {
-          this.todos.push({
-            todoText: a,
-            completed: false
-          });
-          this.displayTodos();
-        },
-        //todolist.addTo('added item')
-        changeTo: function(index, todoText) {
-          this.todos[index].todoText = todoText;
-          this.displayTodos();
-        },
-        //todolist.changeTo(0,'changed')
-        deleteTo: function(index) {
-          this.todos.splice(index, 1);
-          this.displayTodos();
-          //tolist.deleteTo(0)
-        },
-        toggleCompleted: function(position) {
-          var short = this.todos[position];
-          short.completed = !short.completed;
-          this.displayTodos();
-        }
-      };
+        };
 
-      //version6 toggle
+        //version6 toggle
 
-      var todolist = {
-        todos: [],
+        var todolist = {
+          todos: [],
 
-        addTo: function(a) {
-          this.todos.push({
-            todoText: a,
-            completed: false
-          });
-        },
-        //todolist.addTo('added item')
-        changeTo: function(index, todoText) {
-          this.todos[index].todoText = todoText;
-        },
-        //todolist.changeTo(0,'changed')
-        deleteTo: function(index) {
-          this.todos.splice(index, 1);
+          addTo: function(a) {
+            this.todos.push({
+              todoText: a,
+              completed: false
+            });
+          },
+          //todolist.addTo('added item')
+          changeTo: function(index, todoText) {
+            this.todos[index].todoText = todoText;
+          },
+          //todolist.changeTo(0,'changed')
+          deleteTo: function(index) {
+            this.todos.splice(index, 1);
 
-          //tolist.deleteTo(0)
-        },
-        toggleCompleted: function(position) {
-          var short = this.todos[position];
-          short.completed = !short.completed;
-        },
-        toggleAll: function() {
-          var totalTodos = this.todos.length; // total elements in todos array
-          completedTodos = 0; // where to start cheked elements
-          //for number of completed todos
-          for (var i = 0; i < totalTodos; i++) {
-            if (this.todos[i].completed === true) {
-              completedTodos++;
-            }
+            //tolist.deleteTo(0)
+          },
+          toggleCompleted: function(position) {
+            var short = this.todos[position];
+            short.completed = !short.completed;
+          },
+          toggleAll: function() {
+            var totalTodos = this.todos.length; // total elements in todos array
+            completedTodos = 0; // where to start cheked elements
+
+            this.todos.forEach(function(todo) {
+              if (todo.completed === true) {
+                completedTodos++;
+              }
+            });
+
+            //first case: if everything is true , tik all of them false
+            if (completedTodos === totalTodos) {
+
+              this.todos.forEach( function(todo) {
+                todo.completed = false;
+              })
+            } //second case: make everything true
+            else {
+                this.todos.forEach( function(todo) {
+                todo.completed = true;
+            });
           }
-          //first case: if everything is true , tik all of them false
-          if (completedTodos === totalTodos) {
-            //make false for each item
-            for (var i = 0; i < totalTodos; i++) {
-              this.todos[i].completed = false;
-            }
-          } //second case: make everything true
-          else {
-            for (var i = 0; i < totalTodos; i++) {
-              this.todos[i].completed = true;
-            }
+         }
+        };
+
+        //version 8 - adding js into html with a different approach
+        var handlers = {
+          toggleAll: function() {
+            todolist.toggleAll();
+            view.displayTodos();
+          },
+          addTo: function() {
+            var input = document.getElementById("addTodoTextInput");
+            todolist.addTo(input.value);
+            input.value = "";
+            view.displayTodos();
+          },
+          changeTo: function() {
+            var changeIndexInput = document.getElementById("changeToIndexInput");
+            var changeTextInput = document.getElementById("changeToTextInput");
+            todolist.changeTo(
+              changeIndexInput.valueAsNumber,
+              changeTextInput.value
+            );
+            changeIndexInput.value = "";
+            changeTextInput.value = "";
+            view.displayTodos();
+          },
+          deleteTo: function(position) {
+            // var deleteToInput = document.getElementById('deleteToIndexInput'); //version 10 we dont need these anymore
+            todolist.deleteTo(position);
+            //deleteToInput.value = '';
+            view.displayTodos();
+          },
+          toggleCompleted: function() {
+            var toggleInput = document.getElementById("toggleInput");
+            todolist.toggleCompleted(toggleInput.valueAsNumber);
+            toggleInput.value = "";
+            view.displayTodos();
           }
-        }
-      };
-      /*
-      // version7 buttons for real app
-      // get access display button:
-      var displayTodosButton = document.getElementById('displayTodosButton');
-      var toggleAllButton = document.getElementById('toggleAllButton');
-      
-      //run the button
-      displayTodosButton.addEventListener('click', function(){
-          todolist.displayTodos();
-      });
-      toggleAllButton.addEventListener('click', function(){
-          todolist.toggleAll();
-      });
-      */
+        };
 
-      //version 8 - adding js into html with a different approach
-      var handlers = {
-        toggleAll: function() {
-          todolist.toggleAll();
-          view.displayTodos();
-        },
-        addTo: function() {
-          var input = document.getElementById("addTodoTextInput");
-          todolist.addTo(input.value);
-          input.value = "";
-          view.displayTodos();
-        },
-        changeTo: function() {
-          var changeIndexInput = document.getElementById("changeToIndexInput");
-          var changeTextInput = document.getElementById("changeToTextInput");
-          todolist.changeTo(
-            changeIndexInput.valueAsNumber,
-            changeTextInput.value
-          );
-          changeIndexInput.value = "";
-          changeTextInput.value = "";
-          view.displayTodos();
-        },
-        deleteTo: function(position) {
-          // var deleteToInput = document.getElementById('deleteToIndexInput'); //version 10 we dont need these anymore
-          todolist.deleteTo(position);
-          //deleteToInput.value = '';
-          view.displayTodos();
-        },
-        toggleCompleted: function() {
-          var toggleInput = document.getElementById("toggleInput");
-          todolist.toggleCompleted(toggleInput.valueAsNumber);
-          toggleInput.value = "";
-          view.displayTodos();
-        }
-      };
+        // version9 escaping from consol
+        var view = {
+          displayTodos() {
+            var todosUl = document.querySelector("ul");
+            todosUl.innerHTML = "";
 
-      // version9 escaping from consol
-      var view = {
-        displayTodos() {
-          var todosUl = document.querySelector("ul");
-          todosUl.innerHTML = "";
+            for (var i = 0; i < todolist.todos.length; i++) {
+              var todoLi = document.createElement("li");
+              var todo = todolist.todos[i]; // just to make easier to read
+              var todoTextWithCompletion = "";
 
-          for (var i = 0; i < todolist.todos.length; i++) {
-            var todoLi = document.createElement("li");
-            var todo = todolist.todos[i]; // just to make easier to read
-            var todoTextWithCompletion = "";
+              if (todo.completed === true) {
+                todoTextWithCompletion = "(x) " + todo.todoText;
+              } else {
+                todoTextWithCompletion = "( ) " + todo.todoText;
+              }
 
-            if (todo.completed === true) {
-              todoTextWithCompletion = "(x) " + todo.todoText;
-            } else {
-              todoTextWithCompletion = "( ) " + todo.todoText;
-            }
+              todoLi.id = i;
+              todoLi.textContent = todoTextWithCompletion;
+              todoLi.appendChild(this.createDeleteButton()); //delete button for each todo
+              todosUl.appendChild(todoLi);
+            }},
+             /*
+            todolist.todos.forEach( function(){
+              var todoLi = document.createElement("li");
+              var todoTextWithCompletion = "";
+              if (todo.completed === true) {
+                todoTextWithCompletion = "(x) " + todo.todoText;
+              } else {
+                todoTextWithCompletion = "( ) " + todo.todoText;
+              }
+              todoLi.id = i;
+              todoLi.textContent = todoTextWithCompletion;
+              todoLi.appendChild(this.createDeleteButton()); //delete button for each todo
+              todosUl.appendChild(todoLi);
+            }, this);
+          },*/
+          createDeleteButton: function() {
+            var deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete";
+            deleteButton.className = "deleteButton";
+            return deleteButton;
+          },
+          // to tidy up the code we put another method into the view object
+          setupEventListeners: function() {
+            var todosUl = document.querySelector("ul");
 
-            todoLi.id = i;
-            todoLi.textContent = todoTextWithCompletion;
-            todoLi.appendChild(this.createDeleteButton()); //delete button for each todo
-            todosUl.appendChild(todoLi);
+            todosUl.addEventListener("click", function(event) {
+              //console.log(event.target.parentNode.id);//we used inspect element to find what we are looking for such as target, parentNode..
+              var elementClicked = event.target;
+
+              if (elementClicked.className === "deleteButton") {
+                handlers.deleteTo(parseInt(elementClicked.parentNode.id));
+              }
+            });
           }
-        },
-        createDeleteButton: function() {
-          var deleteButton = document.createElement("button");
-          deleteButton.textContent = "Delete";
-          deleteButton.className = "deleteButton";
-          return deleteButton;
-        },
-        // to tidy up the code we put another method into the view object
-        setupEventListeners: function() {
-          var todosUl = document.querySelector("ul");
-
-          todosUl.addEventListener("click", function(event) {
-            //console.log(event.target.parentNode.id);//we used inspect element to find what we are looking for such as target, parentNode..
-            var elementClicked = event.target;
-
-            if (elementClicked.className === "deleteButton") {
-              handlers.deleteTo(parseInt(elementClicked.parentNode.id));
-            }
-          });
-        }
-      };
-      view.setupEventListeners();
-
+        };
+        view.setupEventListeners();
     </script>
   </body>
 </html>
